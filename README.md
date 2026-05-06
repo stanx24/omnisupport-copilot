@@ -141,10 +141,16 @@ docker compose --profile tools --env-file infra/env/.env.local -f infra/docker-c
 - `3000` — Dagster
 - `9000/9001` — MinIO API / Console
 - `6006` — Phoenix
+- `15432` — PostgreSQL / pgvector（可通过 `POSTGRES_HOST_PORT` 覆盖）
 
-默认不对宿主机开放：
-- PostgreSQL `5432`
-  - 只在 Docker 网络内可见，避免与学员本机数据库冲突
+DataGrip / DBeaver 连接容器内 PostgreSQL：
+- Host: `localhost`
+- Port: `15432`
+- Database: `omnisupport`
+- User: `omni`
+- Password: `omnipass`
+
+如果本机没有 PostgreSQL 端口冲突，也可以在 `infra/env/.env.local` 中设置 `POSTGRES_HOST_PORT=5432`。
 
 ---
 

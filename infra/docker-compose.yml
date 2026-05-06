@@ -34,6 +34,8 @@ services:
       interval: 10s
       timeout: 5s
       retries: 5
+    ports:
+      - "${POSTGRES_HOST_PORT:-15432}:5432"
 
   # ─────────────────────────────────────────────────────────────────────────────
   # 2. MinIO — 对象存储 (S3 兼容), raw zone 与中间制品落盘
